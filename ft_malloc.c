@@ -6,7 +6,7 @@
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 14:19:52 by eleclet           #+#    #+#             */
-/*   Updated: 2017/07/08 14:30:41 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/07/08 16:49:15 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void *ft_malloc(size_t size)
 {
 	void *ptr;
 
+	ptr = NULL;	
+	size++;
 	return (ptr);
 }	
 
