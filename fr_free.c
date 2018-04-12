@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_malloc.c                                        :+:      :+:    :+:   */
+/*   fr_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/08 14:19:52 by eleclet           #+#    #+#             */
-/*   Updated: 2018/04/12 18:24:49 by eleclet          ###   ########.fr       */
+/*   Created: 2018/04/12 15:03:13 by eleclet           #+#    #+#             */
+/*   Updated: 2018/04/12 18:24:56 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_malloc.h"
 
-void *ft_malloc(size_t size)
+void ft_free(void *ptr)
 {
-	void *ptr;
-
-	ptr = NULL;	
-	size++;
-	return (ptr);
-}	
-
-
+	if (ptr == NULL)
+		return
+}

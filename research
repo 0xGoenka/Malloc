@@ -1,0 +1,58 @@
+Malloc research
+
+
+This project can t use malloc for internal functionnement
+This project shall pre alloc small and meedium sized alloc
+
+La taille des allocs dois etre un multiple de getpagesize
+
+MMAP
+- Ask system to give me mem
+arg:
+ 1 - addr = 
+
+MUNMAP
+- Give back mem to system
+How munmap() handles a dirty page, depends on what type of memory is being
+unmapped:
+
+#this to func are slow i shall limit call to them for better perf
+
+GETPAGESIZE
+The getpagesize() function returns the number of bytes in a page.  Page
+granularity is the granularity of many of the memory management calls.
+The page size is a system page size and may not be the same as the underly-ing 
+hardware page size.
+
+
+GETRLIMIT
+Limits on the consumption of system resources by the current process and
+each process it creates may be obtained with the getrlimit() call, and set
+with the setrlimit() call.
+
+LIBPTHREAD
+
+
+
+Malloc()
+	allocate mem
+	Tiny 1 to 100 octet
+	medium 101 to 10000 octet
+	Large  10001 to 100000 octet
+Free()
+	if ptr == NULL do nothing
+	
+	in case of error return NULL
+Realloc()
+	Realloc
+	if no more place in the current allocation
+	create a larger one
+	
+	in case of error return NULL
+
+
+
+technical term:
+
+- Page Size:
+		Page size is a unit defined by the system wich represent a certain ammount of data
