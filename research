@@ -9,7 +9,12 @@ La taille des allocs dois etre un multiple de getpagesize
 MMAP
 - Ask system to give me mem
 arg:
- 1 - addr = 
+ 1 - addr   = NULL so mmap find by itself where to stock data
+ 2 - len    = how many octet do we need to get
+ 3 - prot   = flag READ WRITE EXEC protection
+ 4 - flags  = some more flags
+ 5 - fd     = cause mmap initialy is used to store file
+ 6 - offset = idk yet
 
 MUNMAP
 - Give back mem to system
@@ -50,9 +55,55 @@ Realloc()
 	
 	in case of error return NULL
 
+Show_alloc_mem()
+
+	print memory alloc by size
+
 
 
 technical term:
 
 - Page Size:
 		Page size is a unit defined by the system wich represent a certain ammount of data
+
+
+
+Objectif:
+	Use mmap with this flags
+	MAP_PRIVATE 
+	MAP_ANON
+	PROT_WRITE
+	PROT_READ
+
+	Organisation
+	A zone will get a meta block at the beginning like this
+	[o||||||||] to save the state of the zone
+	This zone shall know wich type of zone it is (TINY, SMALL etc)
+	This zone shall know wich block is free or not
+	This zone shall know who is the next and prev zone
+	This zone shall know itself len
+
+	6
+	struct zone:
+		len; // sahll def type also
+		free_zone[100];
+		*zone_next;
+		*zone_prev;
+		*blockchain;
+
+
+
+	malloc(data):
+		size = sizeof(data);
+		type = type():
+					if (size < 1000):
+						return TINY; //etc
+
+		find free space in a tiny zone if none create one
+
+		findspace():
+		create_zone():
+
+
+
+

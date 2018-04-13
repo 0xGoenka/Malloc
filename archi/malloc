@@ -1,0 +1,17 @@
+malloc(data):
+	define type
+	find zone with this type and free space
+	if not found create one
+
+findzone(type):
+	go throught the linked list to find a free space
+	if not found create a new zone
+
+createanewzone(zone 0):
+	if zone 0 == null
+		create the first zone
+	else place it at the end of the linked list
+
+	create zone:
+		
+
