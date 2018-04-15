@@ -12,25 +12,12 @@
 
 #include "ft_malloc.h"
 
-
-void	*getmem(size_t size)
+int main()
 {
-	return mmap(0, sizeof(t_zone), PROT_WRITE | PROT_READ,
-	MAP_ANON | MAP_PRIVATE, -1, 0);
+
+	t_zone *ptr = NULL;
+	char *p;
+	p = ft_malloc(10);
+
+	return (0);
 }
-
-void	*ft_malloc(size_t size)
-{
-	static t_zone *gen = NULL;
-	char type = -1;
-
-	if (gen == NULL)
-		gen_init(gen);
-
-	type = find_type(size);
-		
-	if (find_zone(type, gen) == 0)
-		return (create_zone());
-}	
-
-

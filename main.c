@@ -10,10 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/resource.h>
-#include <sys/mman.h>
-#include <stdio.h>
-#include "libft/libft.h"
+#include "ft_malloc.h"
 
 typedef struct s_zone
 {
