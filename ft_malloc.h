@@ -6,7 +6,7 @@
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 14:12:44 by eleclet           #+#    #+#             */
-/*   Updated: 2018/04/12 18:24:52 by eleclet          ###   ########.fr       */
+/*   Updated: 2018/04/30 18:24:17 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,11 @@
 #include "libft/libft.h"
 #include <stdio.h>
 #include <sys/mman.h>
-#include <sys/ressource.h>
-
-typedef		struct	s_gen
-{
-	
-}			t_gen;
+#include <sys/resource.h>
 
 typedef		struct	s_zone
 {
-	char		type;
+	int		type;
 	int		len;
 	int		state[100];
 	struct s_zone 	*prev;
@@ -47,5 +42,13 @@ void	*getmem(size_t size);
 
 
 t_zone	*gen_init(t_zone *gen);
+
+int		find_type(size_t size);
+int		type_to_size(char type);
+void	*find_storage(t_zone *zone);
+void	*find_zone(char type, t_zone *gen);
+void	*create_zone(t_zone *gen, char type, size_t size);
+void	show_mem(t_zone *gen);
+void	print_state(t_zone *zone);
 
 #endif
