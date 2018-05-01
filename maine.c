@@ -6,7 +6,7 @@
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 14:19:52 by eleclet           #+#    #+#             */
-/*   Updated: 2018/04/30 18:24:22 by eleclet          ###   ########.fr       */
+/*   Updated: 2018/05/01 18:26:36 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,21 @@ int main()
 
 	t_zone *ptr = NULL;
 	char *p;
-	char *s = "qwertyuiopsdfghjklzxcvbnmquireuaskdjczxmnkm,hnckjashdkjashdkasjdlkasjfkjdhsfkjhsdklfhsdkljfhsdkjfhksjdhfklsdhflkdsjhfklsdhfklsdhfkjdshfkdshkfljhsdklfjhdskjfhksdjhfkjsdhfjkdshfdskjdffdfdffffffffffssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss";
+	char *pt;
+	char *s = "qwertyuiopsdfghjklzxcvbnmquireuaskdjczxmnkm,hnckjasssshdkjashdkasjdlkasjfkjdhsfkjhsdklfhsdkljfhsdkjfhksjdhfklsdhflkdsjhfklsdhfklsdhfkjdshfkdshkfljhsdklfjhdskjfhksdjhfkjsdhfjkdshfdskjdffdfdffffffffffssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss";
 
 	int t = 0;
-	while (t < 130)
+	while (t < 100000)
 	{
-		p = ft_malloc(10);
+		p = ft_malloc(t);
 		if (p == NULL)
 		{
 			ft_putstr("malloc failed");
 			return 0;
 		}
-		ft_memccpy(p,s,0,10);
+
+		pt = ft_memcpy(p, s, t);
 		t++;
 	}
-
 	return (0);
 }
