@@ -6,7 +6,7 @@
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 14:19:52 by eleclet           #+#    #+#             */
-/*   Updated: 2018/04/30 18:24:25 by eleclet          ###   ########.fr       */
+/*   Updated: 2018/05/01 18:36:15 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,16 @@
 
 void	*getmem(size_t size)
 {
-	return mmap(0, sizeof(t_zone), PROT_WRITE | PROT_READ,
+	void *ptr = mmap(0, size, PROT_WRITE | PROT_READ,
 	MAP_ANON | MAP_PRIVATE, -1, 0);
+
+	if (MAP_FAILED == ptr)
+	{
+		ft_putendl("Mmap FAILED");
+		return NULL;
+	}
+	perror("error");
+	return ptr;
 }
 
 void	*ft_malloc(size_t size)
@@ -28,19 +36,18 @@ void	*ft_malloc(size_t size)
 	t_zone *zone = 0;
 	if (gen == NULL)
 	{
-		gen = gen_init(gen);
+		if((gen = gen_init(gen)) == NULL)
+			return NULL;
+		
 	}
 	type = find_type(size);
-	ft_putstr("size = ");
-	ft_putnbr(size);
-	ft_putstr("  type == ");
-	ft_putnbr(type);
-	ft_putchar('\n');
+
+
 	if ((zone = find_zone(type, gen)) == NULL)
-	{
-		return (create_zone(gen, type, size));
-	}
-		
-	show_mem(gen);
+		zone = create_zone(gen, type, size);
+	if (zone == NULL)
+		return NULL;
+
+	//show_mem(gen);
 	return find_storage(zone);
 }

@@ -6,7 +6,7 @@
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 14:19:52 by eleclet           #+#    #+#             */
-/*   Updated: 2018/05/01 18:26:36 by eleclet          ###   ########.fr       */
+/*   Updated: 2018/05/01 18:58:30 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int main()
 	char *pt;
 	char *s = "qwertyuiopsdfghjklzxcvbnmquireuaskdjczxmnkm,hnckjasssshdkjashdkasjdlkasjfkjdhsfkjhsdklfhsdkljfhsdkjfhksjdhfklsdhflkdsjhfklsdhfklsdhfkjdshfkdshkfljhsdklfjhdskjfhksdjhfkjsdhfjkdshfdskjdffdfdffffffffffssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss";
 
+
 	int t = 0;
 	while (t < 100000)
 	{
@@ -30,7 +31,7 @@ int main()
 			return 0;
 		}
 
-		pt = ft_memcpy(p, s, t);
+		pt = ft_memcpy(p, s, 1);
 		t++;
 	}
 	return (0);
