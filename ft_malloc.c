@@ -6,7 +6,7 @@
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 14:19:52 by eleclet           #+#    #+#             */
-/*   Updated: 2018/05/01 18:36:15 by eleclet          ###   ########.fr       */
+/*   Updated: 2018/05/02 19:58:30 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+t_zone	*getstatic(t_zone *gen)
+{
+	static t_zone *geni = NULL;
+
+	if (geni == NULL)
+		geni = gen_init(geni);
+		return geni;
+}
 
 void	*getmem(size_t size)
 {
@@ -25,29 +34,25 @@ void	*getmem(size_t size)
 		ft_putendl("Mmap FAILED");
 		return NULL;
 	}
-	perror("error");
 	return ptr;
 }
 
 void	*ft_malloc(size_t size)
 {
-	static t_zone *gen = NULL;
 	int type = -1;
 	t_zone *zone = 0;
-	if (gen == NULL)
-	{
-		if((gen = gen_init(gen)) == NULL)
-			return NULL;
-		
-	}
-	type = find_type(size);
+	t_zone *gen = NULL;
 
+	gen = getstatic(NULL);
+		
+	type = find_type(size);
 
 	if ((zone = find_zone(type, gen)) == NULL)
 		zone = create_zone(gen, type, size);
 	if (zone == NULL)
 		return NULL;
 
-	//show_mem(gen);
+	//getstatic(gen);
+	show_mem(gen);
 	return find_storage(zone);
 }

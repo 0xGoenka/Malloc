@@ -85,11 +85,9 @@ void	*create_zone(t_zone *gen, char type, size_t size)
 	new->next = NULL;
 	new->type = type;
 	if (type == -1)
-		new->data = getmem(size), ft_putendl("create ZONE TYPE 1"); 
+		new->len = size;
 	else
-	{
-		new->data = getmem(type_to_size(type) * 100);
-		//printf("CREATNEWZONE SIZE = %d", type_to_size(type));
-	}
+		new->len = type_to_size(type) * 100;
+	new->data = getmem(new->len);
 	return new;
 }

@@ -6,7 +6,7 @@
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 14:12:44 by eleclet           #+#    #+#             */
-/*   Updated: 2018/05/01 11:16:47 by eleclet          ###   ########.fr       */
+/*   Updated: 2018/05/02 19:58:32 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,7 @@ void	*find_zone(char type, t_zone *gen);
 void	*create_zone(t_zone *gen, char type, size_t size);
 void	show_mem(t_zone *gen);
 void	print_state(t_zone *zone);
+t_zone *getstatic(t_zone *gen);
+
 
 #endif

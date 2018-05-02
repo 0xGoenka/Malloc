@@ -6,7 +6,7 @@
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 14:19:52 by eleclet           #+#    #+#             */
-/*   Updated: 2018/05/01 18:58:30 by eleclet          ###   ########.fr       */
+/*   Updated: 2018/05/02 19:58:36 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int main()
 
 
 	int t = 0;
-	while (t < 100000)
+	while (t < 5)
 	{
-		p = ft_malloc(t);
+		p = ft_malloc(10);
 		if (p == NULL)
 		{
 			ft_putstr("malloc failed");
@@ -32,6 +32,7 @@ int main()
 		}
 
 		pt = ft_memcpy(p, s, 1);
+		ft_free(p);
 		t++;
 	}
 	return (0);
