@@ -6,35 +6,32 @@
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 15:03:13 by eleclet           #+#    #+#             */
-/*   Updated: 2018/05/16 17:56:29 by eleclet          ###   ########.fr       */
+/*   Updated: 2018/05/16 19:42:45 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_malloc.h"
 
-void ft_free(void *ptr)
+void		ft_free(void *ptr)
 {
-	t_zone *gen = NULL;
-	int size = 0;
-	int blocknumber = 0;
+	t_zone	*gen;
+	int		size;
+	int		blocknumber;
 
 	if (ptr == NULL)
 		return ;
 	gen = getstatic();
-
 	while (gen)
 	{
-		if ((void*)gen->data <= ptr && (long int)gen->data + gen->len >= (long int)ptr)
-			break;
+		if (gen->data <= ptr && (long int)gen->data + gen->len >= (long int)ptr)
+			break ;
 		else
 			gen = gen->next;
 	}
 	if (gen == NULL)
 		return ;
 	size = type_to_size(gen->type);
-	blocknumber = ptr - gen->data;
-
-	if (blocknumber != 0)
+	if ((blocknumber = ptr - gen->data) != 0)
 	{
 		blocknumber = blocknumber / size;
 		gen->state[blocknumber - 1] = 0;

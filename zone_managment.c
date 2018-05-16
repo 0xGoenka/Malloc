@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   zone_managment.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/05/16 19:47:23 by eleclet           #+#    #+#             */
+/*   Updated: 2018/05/16 19:51:16 by eleclet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_malloc.h"
 
-void	*find_zone(char type, t_zone *gen)
+void		*find_zone(char type, t_zone *gen)
 {
-	t_zone *ptr;
+	t_zone	*ptr;
 
 	ptr = gen->next;
 	if (type == -1)
@@ -17,13 +29,15 @@ void	*find_zone(char type, t_zone *gen)
 	}
 	return (0);
 }
-void	*find_storage(t_zone *zone)
-{
-	int i = 0;
 
+void		*find_storage(t_zone *zone)
+{
+	int		i;
+
+	i = 0;
 	if (zone == NULL)
-		return NULL;
-	if (zone->type == -1) // if zone == ove4r classic size
+		return (NULL);
+	if (zone->type == -1)
 		return (zone->data);
 	while (i < 100)
 	{
@@ -36,7 +50,8 @@ void	*find_storage(t_zone *zone)
 	}
 	return (0);
 }
-int		find_type(size_t size)
+
+int			find_type(size_t size)
 {
 	if (size <= 10)
 		return (1);
@@ -51,11 +66,12 @@ int		find_type(size_t size)
 	return (-1);
 }
 
-int		type_to_size(char type)
+int			type_to_size(char type)
 {
-	t_zone *gen;
-	int ret = 1;
+	t_zone	*gen;
+	int		ret;
 
+	ret = 1;
 	if (type == -1)
 	{
 		gen = getstatic();
@@ -66,15 +82,16 @@ int		type_to_size(char type)
 		ret = ret * 10;
 		type--;
 	}
-	return ret;
+	return (ret);
 }
 
-void	*create_zone(t_zone *gen, char type, size_t size)
+void		*create_zone(t_zone *gen, char type, size_t size)
 {
-	t_zone *new;
-	t_zone *tmp;
+	t_zone	*new;
+	t_zone	*tmp;
+	int		i;
 
-	int i = 0;
+	i = 0;
 	new = getmem(sizeof(t_zone));
 	tmp = gen;
 	while (tmp->next)
@@ -94,5 +111,5 @@ void	*create_zone(t_zone *gen, char type, size_t size)
 	else
 		new->len = type_to_size(type) * 100;
 	new->data = getmem(new->len);
-	return new;
+	return (new);
 }
