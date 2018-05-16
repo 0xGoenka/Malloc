@@ -15,14 +15,13 @@
 int main()
 {
 
-	t_zone *ptr = NULL;
+	t_zone *gen = NULL;
 	char *p;
-	char *pt;
 	char *s = "qwertyuiopsdfghjklzxcvbnmquireuaskdjczxmnkm,hnckjasssshdkjashdkasjdlkasjfkjdhsfkjhsdklfhsdkljfhsdkjfhksjdhfklsdhflkdsjhfklsdhfklsdhfkjdshfkdshkfljhsdklfjhdskjfhksdjhfkjsdhfjkdshfdskjdffdfdffffffffffssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss";
 
 
 	int t = 0;
-	while (t < 5)
+	while (t < 3)
 	{
 		p = ft_malloc(10);
 		if (p == NULL)
@@ -31,9 +30,31 @@ int main()
 			return 0;
 		}
 
-		pt = ft_memcpy(p, s, 1);
+		p = ft_memcpy(p, s, 10);
+		gen = getstatic();
+		show_mem(gen);
 		ft_free(p);
+		gen = getstatic();
+		show_mem(gen);
 		t++;
 	}
+
+	char *l;
+
+	
+	ft_putendl("============= END ==============");
+	gen = getstatic();
+	ft_putendl("============= ONE ==============");
+	show_mem(gen);
+	l = ft_malloc(1000);
+	ft_putendl("============= tWO ==============");
+	gen = getstatic();
+	show_mem(gen);
+	ft_free(l);
+	ft_putendl("============= THRE +++++++++++++");
+	gen = getstatic();
+	show_mem(gen);
+
+	ft_realloc(l, 10);
 	return (0);
 }

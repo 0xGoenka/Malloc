@@ -15,13 +15,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-t_zone	*getstatic(t_zone *gen)
+t_zone	*getstatic(void)
 {
-	static t_zone *geni = NULL;
+	static t_zone *gen = NULL;
 
-	if (geni == NULL)
-		geni = gen_init(geni);
-		return geni;
+	if (gen == NULL)
+		gen = gen_init(gen);
+		return gen;
 }
 
 void	*getmem(size_t size)
@@ -43,7 +43,7 @@ void	*ft_malloc(size_t size)
 	t_zone *zone = 0;
 	t_zone *gen = NULL;
 
-	gen = getstatic(NULL);
+	gen = getstatic();
 		
 	type = find_type(size);
 

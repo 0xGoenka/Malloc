@@ -19,7 +19,6 @@ void	*find_storage(t_zone *zone)
 {
 	int i = 0;
 
-	t_zone *g = zone;
 	if (zone == NULL)
 		return NULL;
 	if (zone->type == -1) // if zone == ove4r classic size

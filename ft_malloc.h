@@ -41,16 +41,16 @@ void	*ft_realloc(void *ptr, size_t size);
 void	*getmem(size_t size);
 
 
-t_zone	*gen_init(t_zone *gen);
+t_zone	*gen_init();
 
-int		find_type(size_t size);
-int		type_to_size(char type);
+int	find_type(size_t size);
+int	type_to_size(char type);
 void	*find_storage(t_zone *zone);
 void	*find_zone(char type, t_zone *gen);
 void	*create_zone(t_zone *gen, char type, size_t size);
 void	show_mem(t_zone *gen);
 void	print_state(t_zone *zone);
-t_zone *getstatic(t_zone *gen);
+t_zone	*getstatic(void);
 
 
 #endif

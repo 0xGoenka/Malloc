@@ -18,11 +18,13 @@ void ft_free(void *ptr)
 	int size = 0;
 	int blocknumber = 0;
 
-	gen = getstatic(NULL);
+	if (ptr == NULL)
+		return ;
+	gen = getstatic();
 
 	while (gen)
 	{
-		if ((void*)gen->data <= ptr && (int)gen->data + gen->len >= (int)ptr)
+		if ((void*)gen->data <= ptr && (long int)gen->data + gen->len >= (long int)ptr)
 			break;
 		else
 			gen = gen->next;
@@ -37,8 +39,11 @@ void ft_free(void *ptr)
 	blocknumber = ptr - gen->data;
 
 	if (blocknumber != 0)
+	{
 		blocknumber = blocknumber / size;
+		gen->state[blocknumber - 1] = 0;
+	}
 	gen->state[blocknumber] = 0;
-	show_mem(gen);
+	ft_bzero(ptr, size);
 	ptr = NULL;
 }
