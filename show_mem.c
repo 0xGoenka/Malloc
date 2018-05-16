@@ -6,7 +6,7 @@
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/30 14:35:28 by eleclet           #+#    #+#             */
-/*   Updated: 2018/05/01 12:29:08 by eleclet          ###   ########.fr       */
+/*   Updated: 2018/05/16 17:55:36 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	show_mem(t_zone *gen)
 	{
 		if (tmp->type == 0)
 			ft_putendl("GENESIS");
+		else if(tmp->type == -1)
+			ft_putendl("Large block");
 		else
 		{
 

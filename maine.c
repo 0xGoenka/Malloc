@@ -6,7 +6,7 @@
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/08 14:19:52 by eleclet           #+#    #+#             */
-/*   Updated: 2018/05/02 19:58:36 by eleclet          ###   ########.fr       */
+/*   Updated: 2018/05/16 19:33:49 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,6 @@ int main()
 	gen = getstatic();
 	show_mem(gen);
 
-	ft_realloc(l, 10);
+	ft_realloc(l, 10000000);
 	return (0);
 }

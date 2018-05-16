@@ -6,7 +6,7 @@
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 15:03:13 by eleclet           #+#    #+#             */
-/*   Updated: 2018/05/02 19:58:33 by eleclet          ###   ########.fr       */
+/*   Updated: 2018/05/16 17:56:29 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,9 @@ void ft_free(void *ptr)
 			break;
 		else
 			gen = gen->next;
-		ft_putendl("while free");
 	}
 	if (gen == NULL)
-	{
-		ft_putendl("free buf");
 		return ;
-	}
 	size = type_to_size(gen->type);
 	blocknumber = ptr - gen->data;
 

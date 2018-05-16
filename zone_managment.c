@@ -5,6 +5,8 @@ void	*find_zone(char type, t_zone *gen)
 	t_zone *ptr;
 
 	ptr = gen->next;
+	if (type == -1)
+		return (0);
 	while (ptr)
 	{
 		if (ptr->type == type && ptr->state[99] == 0)
@@ -22,7 +24,7 @@ void	*find_storage(t_zone *zone)
 	if (zone == NULL)
 		return NULL;
 	if (zone->type == -1) // if zone == ove4r classic size
-		return (NULL);
+		return (zone->data);
 	while (i < 100)
 	{
 		if (zone->state[i] == 0)
@@ -32,10 +34,6 @@ void	*find_storage(t_zone *zone)
 		}
 		i++;
 	}
-	
-	//ft_putstr("=================================================================");
-
-	//return (find_storage(create_zone(zone, zone->type, type_to_size(zone->type))));
 	return (0);
 }
 int		find_type(size_t size)
@@ -55,9 +53,14 @@ int		find_type(size_t size)
 
 int		type_to_size(char type)
 {
+	t_zone *gen;
 	int ret = 1;
+
 	if (type == -1)
-		return (-1);
+	{
+		gen = getstatic();
+		return (gen->len);
+	}
 	while (type > 0)
 	{
 		ret = ret * 10;
@@ -84,7 +87,10 @@ void	*create_zone(t_zone *gen, char type, size_t size)
 	new->next = NULL;
 	new->type = type;
 	if (type == -1)
+	{
+		printf("we got a winner %d\n", size);
 		new->len = size;
+	}
 	else
 		new->len = type_to_size(type) * 100;
 	new->data = getmem(new->len);
